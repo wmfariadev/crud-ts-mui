@@ -50,7 +50,7 @@ interface ISideMenuProps {
 export const SideMenu: FC<ISideMenuProps> = ({ children }) => {
   const theme = useTheme()
   const smDown = useMediaQuery(theme.breakpoints.down('sm'))
-  const { isDrawerOpen, toogleDrawerOpen } = useDrawerContext()
+  const { isDrawerOpen, toogleDrawerOpen, drawerOptions } = useDrawerContext()
 
   return (
     <>
@@ -76,7 +76,15 @@ export const SideMenu: FC<ISideMenuProps> = ({ children }) => {
 
           <Box flex={1}>
             <List component='nav'>
-              <ListItemLink icon='home' label='Página Inicial' to='/pagina-inicial' onClick={smDown ? toogleDrawerOpen : undefined} />
+              {drawerOptions.map((drawerOption, index) => {
+                return (
+                  <ListItemLink
+                    key={index}
+                    icon={drawerOption.icon}
+                    label={drawerOption.label}
+                    to={drawerOption.path}
+                    onClick={smDown ? toogleDrawerOpen : undefined} />)
+              })}
             </List>
           </Box>
 
