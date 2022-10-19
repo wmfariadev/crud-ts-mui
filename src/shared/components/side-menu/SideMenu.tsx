@@ -12,13 +12,42 @@ import {
 } from '@mui/material'
 import { Box } from '@mui/system'
 import { FC, ReactNode } from 'react'
+import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom'
 import { useDrawerContext } from '../../contexts'
 
-interface IMenuLateralProps {
+interface IListItemLinkProps {
+  label: string
+  icon: string
+  to: string
+  onClick?: () => void
+}
+
+const ListItemLink: FC<IListItemLinkProps> = ({ to, icon, label, onClick }) => {
+
+  const navigate = useNavigate()
+  const resolvedPath = useResolvedPath(to)
+  const matchPath = useMatch({ path: resolvedPath.pathname, end: false })
+
+  const handleClick = () => {
+    navigate(to)
+    onClick?.()
+  }
+
+  return (
+    <ListItemButton selected={!!matchPath} onClick={handleClick}>
+      <ListItemIcon>
+        <Icon>{icon}</Icon>
+      </ListItemIcon>
+      <ListItemText primary={label} />
+    </ListItemButton>
+  )
+}
+
+interface ISideMenuProps {
   children?: ReactNode
 }
 
-export const MenuLateral: FC<IMenuLateralProps> = ({ children }) => {
+export const SideMenu: FC<ISideMenuProps> = ({ children }) => {
   const theme = useTheme()
   const smDown = useMediaQuery(theme.breakpoints.down('sm'))
   const { isDrawerOpen, toogleDrawerOpen } = useDrawerContext()
@@ -47,12 +76,7 @@ export const MenuLateral: FC<IMenuLateralProps> = ({ children }) => {
 
           <Box flex={1}>
             <List component='nav'>
-              <ListItemButton selected={true}>
-                <ListItemIcon>
-                  <Icon>home</Icon>
-                </ListItemIcon>
-                <ListItemText primary="Página Inicial" />
-              </ListItemButton>
+              <ListItemLink icon='home' label='Página Inicial' to='/pagina-inicial' onClick={smDown ? toogleDrawerOpen : undefined} />
             </List>
           </Box>
 
