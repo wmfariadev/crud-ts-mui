@@ -13,7 +13,7 @@ import {
 import { Box } from '@mui/system'
 import { FC, ReactNode } from 'react'
 import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom'
-import { useDrawerContext } from '../../contexts'
+import { useAppThemeContext, useDrawerContext } from '../../contexts'
 
 interface IListItemLinkProps {
   label: string
@@ -51,6 +51,7 @@ export const SideMenu: FC<ISideMenuProps> = ({ children }) => {
   const theme = useTheme()
   const smDown = useMediaQuery(theme.breakpoints.down('sm'))
   const { isDrawerOpen, toogleDrawerOpen, drawerOptions } = useDrawerContext()
+  const { toogleTheme, themeName } = useAppThemeContext()
 
   return (
     <>
@@ -85,6 +86,17 @@ export const SideMenu: FC<ISideMenuProps> = ({ children }) => {
                     to={drawerOption.path}
                     onClick={smDown ? toogleDrawerOpen : undefined} />)
               })}
+            </List>
+          </Box>
+
+          <Box>
+            <List component='nav'>
+              <ListItemButton onClick={toogleTheme}>
+                <ListItemIcon>
+                  <Icon>{themeName === 'light' ? 'dark_mode' : 'light_mode'}</Icon>
+                </ListItemIcon>
+                <ListItemText primary={themeName === 'light' ? 'Dark' : 'Light'} />
+              </ListItemButton>
             </List>
           </Box>
 
