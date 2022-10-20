@@ -1,36 +1,32 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
-import { Button } from '@mui/material'
-import { useDrawerContext } from '../shared/contexts'
 import { useEffect } from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
+
+import { useDrawerContext } from '../shared/contexts'
+import { Dashboard } from '../pages/dashboard/Dashboard'
 
 export const AppRoutes = () => {
 
-  const { toogleDrawerOpen, setDrawerOptions } = useDrawerContext()
+  const { setDrawerOptions } = useDrawerContext()
 
   useEffect(() => {
     setDrawerOptions([
       {
         label: 'Página Inicial',
-        path: 'pagina-inicial',
+        path: 'home',
         icon: 'home'
       },
       {
-        label: 'Cadastro',
-        path: 'cadastro',
-        icon: 'form'
-      },
-      {
-        label: 'Contato',
-        path: 'contato',
-        icon: 'letter'
+        label: 'Dashboard',
+        path: 'dashbord',
+        icon: 'star'
       }])
   }, [])
 
   return (
     <Routes>
-      <Route path="/pagina-inicial"
-        element={<Button variant="contained" color="primary" onClick={toogleDrawerOpen}>Open Menu</Button>} />
-      <Route path="*" element={<Navigate to="/pagina-inicial" />} />
+      <Route path="/home" element={<b>BEM VINDO AO SISTEMA</b>} />
+      <Route path="/dashbord" element={<Dashboard />} />
+      <Route path="*" element={<Navigate to="/home" />} />
     </Routes>
   )
 }
