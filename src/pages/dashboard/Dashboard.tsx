@@ -8,7 +8,9 @@ export const Dashboard: React.FC = () => {
       title={'Dashboard'}
       tools={(
         // <ToolsList showInputSearch showNewButton />
-        <ToolsDetail showSaveCloseButton />
+        <ToolsDetail 
+          showSaveCloseButton 
+          showSaveCloseButtonLoading />
       )}>
     </DefaultLayout>
   )
