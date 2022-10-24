@@ -10,7 +10,8 @@ export const Dashboard: React.FC = () => {
         // <ToolsList showInputSearch showNewButton />
         <ToolsDetail 
           showSaveCloseButton 
-          showSaveCloseButtonLoading />
+          showNewButton
+        />
       )}>
     </DefaultLayout>
   )

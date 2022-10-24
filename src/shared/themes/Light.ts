@@ -22,7 +22,13 @@ export const LightTheme = createTheme({
     }
   },
   typography: {
-    allVariants: {
+    h3: {
+      color: '#444444',
+    },
+    h4: {
+      color: '#444444',
+    },
+    h5: {
       color: '#444444',
     }
   }
