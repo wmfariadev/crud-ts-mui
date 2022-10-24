@@ -13,7 +13,7 @@ import {
   Icon
 } from '@mui/material'
 
-interface IToolsBarProps {
+interface IToolsListProps {
   children?: ReactNode
   textSearch?: string
   showInputSearch?: boolean
@@ -23,14 +23,14 @@ interface IToolsBarProps {
   handleClickNewButton?: () => void
 }
 
-export const ToolsBar: React.FC<IToolsBarProps> = ({
+export const ToolsList: React.FC<IToolsListProps> = ({
   textSearch = '',
   showInputSearch = false,
   onChangeTextSearch,
   textNewButton = 'Novo',
   showNewButton = false,
   handleClickNewButton
-}: IToolsBarProps) => {
+}: IToolsListProps) => {
   const theme = useTheme()
 
   return (
