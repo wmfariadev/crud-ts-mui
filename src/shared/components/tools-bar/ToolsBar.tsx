@@ -18,12 +18,18 @@ interface IToolsBarProps {
   textSearch?: string
   showInputSearch?: boolean
   onChangeTextSearch?: (newText: string) => void
+  textNewButton?: string
+  showNewButton?: boolean
+  handleClickNewButton?: () => void
 }
 
 export const ToolsBar: React.FC<IToolsBarProps> = ({
   textSearch = '',
   showInputSearch = false,
-  onChangeTextSearch
+  onChangeTextSearch,
+  textNewButton = 'Novo',
+  showNewButton = false,
+  handleClickNewButton
 }: IToolsBarProps) => {
   const theme = useTheme()
 
@@ -38,13 +44,15 @@ export const ToolsBar: React.FC<IToolsBarProps> = ({
       gap={1}
       alignItems='center'>
 
-      <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+      {showInputSearch && (<FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
         <InputLabel htmlFor="outlined-adornment-search" size='small'>Pesquisar</InputLabel>
         <OutlinedInput
           id="outlined-adornment-search"
           type={'text'}
           size='small'
           label="Pesquisar"
+          value={textSearch}
+          onChange={(e) => onChangeTextSearch?.(e.target.value)}
           endAdornment={
             <InputAdornment position="end">
               <IconButton aria-label="pesquisar" edge="end">
@@ -53,16 +61,17 @@ export const ToolsBar: React.FC<IToolsBarProps> = ({
             </InputAdornment>
           }
         />
-      </FormControl>
+      </FormControl>)}
 
       <Box flex={1} display='flex' justifyContent='end'>
-        <Button
+        {showNewButton && (<Button
+          onClick={handleClickNewButton}
           color='primary'
           disableElevation
           variant='contained'
           startIcon={<Icon>add</Icon>}>
-          Novo
-        </Button>
+          {textNewButton}
+        </Button>)}
       </Box>
 
     </Box>
