@@ -13,6 +13,8 @@ import {
   Icon
 } from '@mui/material'
 
+import { Environment } from '../../environment'
+
 interface IToolsListProps {
   children?: ReactNode
   textSearch?: string
@@ -45,12 +47,12 @@ export const ToolsList: React.FC<IToolsListProps> = ({
       alignItems='center'>
 
       {showInputSearch && (<FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
-        <InputLabel htmlFor="outlined-adornment-search" size='small'>Pesquisar</InputLabel>
+        <InputLabel htmlFor="outlined-adornment-search" size='small'>{Environment.SEARCH_INPUT}</InputLabel>
         <OutlinedInput
           id="outlined-adornment-search"
           type={'text'}
           size='small'
-          label="Pesquisar"
+          label={Environment.SEARCH_INPUT}
           value={textSearch}
           onChange={(e) => onChangeTextSearch?.(e.target.value)}
           endAdornment={
