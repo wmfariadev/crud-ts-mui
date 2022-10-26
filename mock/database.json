@@ -3,7 +3,23 @@
     {
       "id": 1,
       "name": "William",
-      "age": 35
+      "age": 35,
+      "city": 1,
+      "email": "willianmoraesfaria@gmail.com"
+    },
+    {
+      "id": 2,
+      "name": "Jaqueline",
+      "age": 36,
+      "city": 1,
+      "email": "jackye.andrad@gmail.com"
+    },
+    {
+      "id": 3,
+      "name": "Daphne",
+      "age": 11,
+      "city": 1,
+      "email": "willianmoraesfaria@gmail.com"
     }
   ]
 }
