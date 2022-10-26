@@ -41,7 +41,6 @@ export const ToolsDetail: React.FC<IToolsDetailProps> = ({
   showSaveButton = true,
   showSaveCloseButton = false,
   showNewButtonLoading = false,
-  showBackButtonLoading = false,
   showDeleteButtonLoading = false,
   showSaveButtonLoading = false,
   showSaveCloseButtonLoading = false,
