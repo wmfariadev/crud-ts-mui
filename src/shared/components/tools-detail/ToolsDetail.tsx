@@ -1,5 +1,15 @@
 import { ReactNode } from 'react'
-import { Box, Button, Divider, Icon, Paper, Skeleton, Typography, useTheme, useMediaQuery } from '@mui/material'
+import {
+  Box,
+  Button,
+  Divider,
+  Icon,
+  Paper,
+  Skeleton,
+  Typography,
+  useTheme,
+  useMediaQuery
+} from '@mui/material'
 
 interface IToolsDetailProps {
   children?: ReactNode
@@ -80,7 +90,7 @@ export const ToolsDetail: React.FC<IToolsDetailProps> = ({
             variant='outlined'
             startIcon={<Icon>save</Icon>}>
             <Typography variant='button' noWrap>
-              Salvar e Voltar
+              Salvar e Fechar
             </Typography>
           </Button>
 
