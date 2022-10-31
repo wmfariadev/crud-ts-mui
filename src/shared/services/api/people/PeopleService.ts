@@ -1,7 +1,7 @@
 import { Environment } from '../../../environment'
 import { Api } from '../axios-config'
 
-interface IPersonDetail {
+export interface IPersonDetail {
   id: number,
   name: string,
   age: number,
@@ -9,7 +9,7 @@ interface IPersonDetail {
   email: string
 }
 
-interface IListPeople {
+export interface IListPeople {
   id: number,
   name: string,
   age: number,
@@ -17,7 +17,7 @@ interface IListPeople {
   email: string
 }
 
-type TPersonWithTotalCount = {
+export type TPersonWithTotalCount = {
   data: IListPeople[]
   totalCount: number
 }
@@ -27,6 +27,9 @@ const getAll = async (page = 1, filter = ''): Promise<TPersonWithTotalCount | Er
   try {
     const basePath = `/people?_page=${page}&_limit=${Environment.MAX_ROWS}&name_like=${filter}`
     const { data, headers } = await Api.get(basePath)
+
+    // eslint-disable-next-line no-debugger
+    // debugger
 
     if (data) {
       return {
